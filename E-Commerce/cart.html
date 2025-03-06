@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .cart-item { border: 1px solid #ddd; padding: 10px; margin: 10px; background: white; }
+        button { background: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background: darkblue; }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div id="cart-items"></div>
+    <h2 id="total-price"></h2>
+    <a href="payment.html"><button>Proceed to Payment</button></a>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItems = document.getElementById("cart-items");
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+            cart.forEach((item, index) => {
+                total += item.price;
+                let div = document.createElement("div");
+                div.className = "cart-item";
+                div.innerHTML = `<p>${item.name} - $${item.price} <button onclick="removeItem(${index})">Remove</button></p>`;
+                cartItems.appendChild(div);
+            });
+        }
+
+        document.getElementById("total-price").innerText = "Total: $" + total;
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload();
+        }
+    </script>
+</body>
+</html>

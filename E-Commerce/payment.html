@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        form { background: white; padding: 20px; border-radius: 5px; width: 300px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { background: green; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+        button:hover { background: darkgreen; }
+    </style>
+</head>
+<body>
+    <h1>Payment</h1>
+    <form onsubmit="completePayment(event)">
+        <label for="card">Card Number:</label>
+        <input type="text" id="card" required>
+
+        <label for="expiry">Expiry Date:</label>
+        <input type="month" id="expiry" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="password" id="cvv" required>
+
+        <button type="submit">Pay Now</button>
+    </form>
+
+    <script>
+        function completePayment(event) {
+            event.preventDefault();
+            alert("Payment Successful!");
+            localStorage.removeItem("cart");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

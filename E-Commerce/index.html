@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-Commerce</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .product { border: 1px solid #ddd; padding: 20px; margin: 10px; display: inline-block; background: white; }
+        button { background: green; color: white; padding: 10px; border: none; cursor: pointer; }
+        button:hover { background: darkgreen; }
+    </style>
+</head>
+<body>
+    <h1>Simple E-Commerce</h1>
+    <div class="product">
+        <h2>Product 1</h2>
+        <p>Price: $50</p>
+        <button onclick="addToCart('Product 1', 50)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <h2>Product 2</h2>
+        <p>Price: $80</p>
+        <button onclick="addToCart('Product 2', 80)">Add to Cart</button>
+    </div>
+    <br>
+    <a href="cart.html"><button>Go to Cart</button></a>
+
+    <script>
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+</body>
+</html>
