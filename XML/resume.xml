@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="resume.xsl"?>
+<resume>
+    <personal_info>
+        <name>Tharun B</name>
+        <location>Salem, India</location>
+        <contact>
+            <phone>7418306367</phone>
+            <email>tharun6367@gmail.com</email>
+            <github>https://github.com/THARUN6367</github>
+            <linkedin>https://www.linkedin.com/in/tharun-b-/</linkedin>
+        </contact>
+    </personal_info>
+
+    <summary>
+        Experienced in developing efficient, scalable solutions with a strong grasp of deep learning models, cloud deployment, and real-time analytics. Eager to learn and contribute to software development projects, while leveraging the knowledge of ML and cloud platforms to create efficient and scalable solutions. Skilled in working within agile teams to drive product development from concept to deployment.
+        <areas_of_interest>
+            <interest>Web Development</interest>
+            <interest>Data Analysis</interest>
+            <interest>Machine Learning</interest>
+        </areas_of_interest>
+    </summary>
+
+    <education>
+        <degree>
+            <institution>SNS College of Technology, Coimbatore, India</institution>
+            <program>Bachelor of Technology in Information Technology</program>
+            <duration>2022 - 2026</duration>
+            <cgpa>8.19</cgpa>
+        </degree>
+    </education>
+
+    <work_experience>
+        <job>
+            <company>Djit Trading, Chennai, India</company>
+            <role>Business Analyst</role>
+            <duration>Jun 2020 - Feb 2024</duration>
+            <responsibilities>
+                <task>Developed a comprehensive data interpretation framework that improved forecasting accuracy by 15%.</task>
+                <task>Conducted data-driven analysis to optimize operational efficiency, reducing reporting time by 67%.</task>
+            </responsibilities>
+        </job>
+        <job>
+            <company>Accezz Minds, Bangalore, India</company>
+            <role>Full Stack Developer</role>
+            <duration>Jul 2024 - Jul 2024</duration>
+            <responsibilities>
+                <task>Created functional prototypes and enhanced client engagement metrics.</task>
+                <task>Worked on front-end and back-end development along with UX/UI design.</task>
+            </responsibilities>
+        </job>
+    </work_experience>
+
+    <projects>
+        <project>
+            <title>Fire Detection Using OpenCV</title>
+            <date>Mar 2023</date>
+            <description>Deployed a real-time fire detection model with an accuracy of 92% using convolutional neural networks.</description>
+        </project>
+        <project>
+            <title>Cartoonify The Image</title>
+            <date>May 2023</date>
+            <description>Utilized OpenCV and Python to develop a cartoonification pipeline, reducing processing time by 42%.</description>
+        </project>
+        <project>
+            <title>Image Stitching</title>
+            <date>Dec 2023</date>
+            <description>Implemented the image stitching process using OpenCV.</description>
+        </project>
+        <project>
+            <title>Customer Onboarding</title>
+            <date>May 2024</date>
+            <description>Developed a modular onboarding system for streamlined customer registration and secure data storage.</description>
+        </project>
+    </projects>
+
+    <certifications>
+        <certification>IoT, IIT Madras – 2023</certification>
+        <certification>Python, Hacker Rank – 2024</certification>
+        <certification>C++, Prepinsta – 2022</certification>
+    </certifications>
+
+    <skills_and_interests>
+        <skill_category>
+            <category>Programming Languages</category>
+            <skills>Python, C++, SQL, HTML</skills>
+        </skill_category>
+        <skill_category>
+            <category>Web Development</category>
+            <skills>HTML, CSS, JavaScript, Figma (UI/UX Design)</skills>
+        </skill_category>
+        <skill_category>
+            <category>Version Control</category>
+            <skills>Git, GitHub</skills>
+        </skill_category>
+        <skill_category>
+            <category>Soft Skills</category>
+            <skills>Problem Solving, Leadership, Team Work, Critical Thinking</skills>
+        </skill_category>
+    </skills_and_interests>
+</resume>
