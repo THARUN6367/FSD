@@ -48,9 +48,10 @@
 
                 <h2>Skills</h2>
                 <ul>
-                    <li><strong>Languages:</strong> <xsl:value-of select="resume/skills/language"/></li>
-                    <li><strong>Web Development:</strong> <xsl:value-of select="resume/skills/webdev"/></li>
-                    <li><strong>Soft Skills:</strong> <xsl:value-of select="resume/skills/softskills"/></li>
+                    <li><strong>Languages:</strong> <xsl:value-of select="resume/skills/Programming Languages"/></li>
+                    <li><strong>Web Development:</strong> <xsl:value-of select="resume/skills/Web Development"/></li>
+                    <li><strong>Soft Skills:</strong> <xsl:value-of select="resume/skills/Version Control"/></li>
+                    <li><strong>Soft Skills:</strong> <xsl:value-of select="resume/skills/Soft Skills"/></li>
                 </ul>
             </div>
         </body>
