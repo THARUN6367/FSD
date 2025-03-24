@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<students>
+    <student>
+        <usn>AU12345</usn>
+        <name>Tharun B</name>
+        <college>SNS College of Technology</college>
+        <branch>Information Technology</branch>
+        <year_of_joining>2023</year_of_joining>
+        <email>tharun6367@gmail.com</email>
+    </student>
+    
+    <student>
+        <usn>AU67890</usn>
+        <name>Arun Kumar</name>
+        <college>PSG College of Technology</college>
+        <branch>Computer Science and Engineering</branch>
+        <year_of_joining>2022</year_of_joining>
+        <email>arun.kumar@example.com</email>
+    </student>
+    
+    <student>
+        <usn>AU54321</usn>
+        <name>Meera S</name>
+        <college>Coimbatore Institute of Technology</college>
+        <branch>Electronics and Communication Engineering</branch>
+        <year_of_joining>2021</year_of_joining>
+        <email>meera.s@example.com</email>
+    </student>
+</students>

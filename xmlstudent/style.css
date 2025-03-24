@@ -1,0 +1,55 @@
+students {
+    display: block;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 50%;
+    margin: auto;
+}
+
+student {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+usn, name, college, branch, year_of_joining, email {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    padding: 2px;
+}
+
+usn {
+    font-size: 18px;
+    color: #d9534f;
+}
+
+name {
+    font-size: 20px;
+    color: #0275d8;
+}
+
+college {
+    font-size: 16px;
+    color: #5cb85c;
+}
+
+branch {
+    font-size: 16px;
+    color: #f0ad4e;
+}
+
+year_of_joining {
+    font-size: 16px;
+    color: #5bc0de;
+}
+
+email {
+    font-size: 16px;
+    color: #d9534f;
+}
