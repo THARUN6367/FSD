@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-btn { background: #28a745; color: white; }
+        .display-btn { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Enter Student Details</h2>
+        <input type="text" id="usn" placeholder="USN">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="college" placeholder="College Name">
+        <input type="text" id="branch" placeholder="Branch">
+        <input type="text" id="year_of_joining" placeholder="Year of Joining">
+        <input type="email" id="email" placeholder="Email">
+
+        <button class="add-btn" onclick="saveStudent()">Add Student</button>
+        <button class="display-btn" onclick="displayStudents()">Display Students</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
