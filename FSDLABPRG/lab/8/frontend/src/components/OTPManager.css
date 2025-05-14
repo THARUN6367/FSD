@@ -1,0 +1,111 @@
+.otp-manager {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.otp-manager .card {
+  padding: 30px;
+}
+
+.otp-manager h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.otp-manager p {
+  margin-bottom: 25px;
+  text-align: center;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.action-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.text-btn {
+  background: none;
+  color: #007bff;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-decoration: underline;
+}
+
+.text-btn:hover {
+  color: #0056b3;
+  background: none;
+}
+
+.text-btn:disabled {
+  color: #aaa;
+  background: none;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.success-step {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-icon {
+  font-size: 5rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.success-step h2 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.success-step .submit-btn {
+  max-width: 200px;
+  margin: 20px auto 0;
+}
+
+/* OTP input fields customization */
+input[type="text"]#otp {
+  letter-spacing: 0.3em;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .otp-manager {
+    padding: 10px;
+  }
+  
+  .otp-manager .card {
+    padding: 20px;
+  }
+  
+  .submit-btn, .form-group input {
+    padding: 10px 15px;
+  }
+} 

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian E-commerce Store</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        :root {
+            --primary-color: #2874f0;
+            --secondary-color: #fb641b;
+            --text-color: #212121;
+            --light-text: #878787;
+            --border-color: #e0e0e0;
+            --success-color: #388e3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: var(--text-color);
+            background-color: #f1f3f6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+        
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product {
+            background-color: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 160px;
+            object-fit: contain;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 8px 0;
+            color: var(--text-color);
+        }
+        
+        .product-price .original-price {
+            text-decoration: line-through;
+            color: var(--light-text);
+            font-weight: normal;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+        
+        .discount {
+            color: var(--success-color);
+            font-size: 14px;
+            margin-left: 8px;
+        }
+        
+        .rating {
+            background-color: var(--success-color);
+            color: white;
+            display: inline-block;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            margin: 8px 0;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-bottom: 12px;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .add-to-cart {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e45714;
+        }
+        
+        #cart-panel {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #cart-panel.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .cart-item {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-item-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        
+        .cart-item-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .cart-item-remove {
+            color: var(--light-text);
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cart-footer {
+            border-top: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .checkout-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        
+        .checkout-button:hover {
+            background-color: #e45714;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            display: none;
+        }
+        
+        .success-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 300;
+            display: none;
+        }
+        
+        .success-message h3 {
+            color: var(--success-color);
+            margin-bottom: 15px;
+        }
+        
+        .success-icon {
+            font-size: 60px;
+            color: var(--success-color);
+            margin-bottom: 20px;
+        }
+        
+        .continue-shopping {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            
+            .product-image {
+                height: 160px;
+            }
+            
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 10px 0 0;
+                width: 100%;
+            }
+            
+            #cart-panel {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>IndiaShop</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products, brands and more">
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                Cart <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/9/e/e/-original-imaghx9q5rvcdghy.jpeg" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <h2>POCO C55 (Cool Blue, 64 GB)</h2>
+                    <p class="product-description">6.71 inch HD+ display, 5000 mAh battery, 4GB RAM</p>
+                    <div class="product-price">₹6,499</div>
+                    <button class="add-to-cart" onclick="addToCart('POCO C55 (Cool Blue, 64 GB)', 6499, 'https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/9/e/e/-original-imaghx9q5rvcdghy.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/k/b/t/-original-imagtq4hqqmpkz7h.jpeg" alt="Smart TV">
+                </div>
+                <div class="product-info">
+                    <h2>Thomson 80 cm (32 inch) HD Ready LED Smart TV</h2>
+                    <p class="product-description">HD Ready LED Smart Android TV with HDR 10</p>
+                    <div class="product-price">₹8,999</div>
+                    <button class="add-to-cart" onclick="addToCart('Thomson 80 cm (32 inch) HD Ready LED Smart TV', 8999, 'https://rukminim2.flixcart.com/image/312/312/xif0q/television/k/b/t/-original-imagtq4hqqmpkz7h.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/headphone/d/h/e/-original-imagt5pncwv2zbyy.jpeg" alt="Headphones">
+                </div>
+                <div class="product-info">
+                    <h2>boAt Rockerz 450 Bluetooth Headset</h2>
+                    <p class="product-description">Wireless headphones with 40mm dynamic drivers</p>
+                    <div class="product-price">₹1,299</div>
+                    <button class="add-to-cart" onclick="addToCart('boAt Rockerz 450 Bluetooth Headset', 1299, 'https://rukminim2.flixcart.com/image/312/312/xif0q/headphone/d/h/e/-original-imagt5pncwv2zbyy.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/shoe/s/x/y/-original-imagg4y6zu7y9zfm.jpeg" alt="Running Shoes">
+                </div>
+                <div class="product-info">
+                    <h2>Aadi Running Shoes For Men</h2>
+                    <p class="product-description">Lightweight, comfortable running shoes with mesh upper</p>
+                    <div class="product-price">₹799</div>
+                    <button class="add-to-cart" onclick="addToCart('Aadi Running Shoes For Men', 799, 'https://rukminim2.flixcart.com/image/312/312/xif0q/shoe/s/x/y/-original-imagg4y6zu7y9zfm.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/smartwatch/q/w/u/-original-imags2xrjsz9zgpw.jpeg" alt="Smartwatch">
+                </div>
+                <div class="product-info">
+                    <h2>Noise ColorFit Pulse Smartwatch</h2>
+                    <p class="product-description">Full touch display, heart rate monitor, activity tracker</p>
+                    <div class="product-price">₹1,499</div>
+                    <button class="add-to-cart" onclick="addToCart('Noise ColorFit Pulse Smartwatch', 1499, 'https://rukminim2.flixcart.com/image/312/312/xif0q/smartwatch/q/w/u/-original-imags2xrjsz9zgpw.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/q/e/z/-original-imagpxgqesgrthks.jpeg" alt="Laptop">
+                </div>
+                <div class="product-info">
+                    <h2>HP 15s Thin & Light Laptop</h2>
+                    <p class="product-description">Intel Core i5, 8GB RAM, 512GB SSD, Windows 11</p>
+                    <div class="product-price">₹38,990</div>
+                    <button class="add-to-cart" onclick="addToCart('HP 15s Thin & Light Laptop', 38990, 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/q/e/z/-original-imagpxgqesgrthks.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/air-cooler/f/p/d/50-desert-cooler-with-anti-bacterial-honeycomb-pads-white-grey-original-imagz3k5hspjyyzb.jpeg" alt="Air Cooler">
+                </div>
+                <div class="product-info">
+                    <h2>Symphony 50 L Desert Air Cooler</h2>
+                    <p class="product-description">50L capacity, honeycomb cooling pads, low power consumption</p>
+                    <div class="product-price">₹9,999</div>
+                    <button class="add-to-cart" onclick="addToCart('Symphony 50 L Desert Air Cooler', 9999, 'https://rukminim2.flixcart.com/image/312/312/xif0q/air-cooler/f/p/d/50-desert-cooler-with-anti-bacterial-honeycomb-pads-white-grey-original-imagz3k5hspjyyzb.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/refrigerator-new/a/v/d/-original-imagmncgh8vfay2g.jpeg" alt="Refrigerator">
+                </div>
+                <div class="product-info">
+                    <h2>Samsung 253 L Frost Free Double Door Refrigerator</h2>
+                    <p class="product-description">Digital inverter, convertible freezer, energy efficient</p>
+                    <div class="product-price">₹25,990</div>
+                    <button class="add-to-cart" onclick="addToCart('Samsung 253 L Frost Free Double Door Refrigerator', 25990, 'https://rukminim2.flixcart.com/image/312/312/xif0q/refrigerator-new/a/v/d/-original-imagmncgh8vfay2g.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/electric-kettle/f/l/n/1-5l-1500w-electric-kettle-butterfly-original-imaghqchyr7bgzzc.jpeg" alt="Electric Kettle">
+                </div>
+                <div class="product-info">
+                    <h2>Butterfly Rapid Brew 1.5L Electric Kettle</h2>
+                    <p class="product-description">1.5L capacity, 1500W, auto shut-off, boil dry protection</p>
+                    <div class="product-price">₹649</div>
+                    <button class="add-to-cart" onclick="addToCart('Butterfly Rapid Brew 1.5L Electric Kettle', 649, 'https://rukminim2.flixcart.com/image/312/312/xif0q/electric-kettle/f/l/n/1-5l-1500w-electric-kettle-butterfly-original-imaghqchyr7bgzzc.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/l1tmf0w0/book/z/0/d/rich-dad-poor-dad-original-imagdc4ksvrgfff4.jpeg" alt="Book">
+                </div>
+                <div class="product-info">
+                    <h2>Rich Dad Poor Dad (Paperback, Robert T. Kiyosaki)</h2>
+                    <p class="product-description">Best-selling personal finance book on wealth building</p>
+                    <div class="product-price">₹349</div>
+                    <button class="add-to-cart" onclick="addToCart('Rich Dad Poor Dad (Paperback, Robert T. Kiyosaki)', 349, 'https://rukminim2.flixcart.com/image/312/312/l1tmf0w0/book/z/0/d/rich-dad-poor-dad-original-imagdc4ksvrgfff4.jpeg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Panel -->
+    <div id="cart-panel">
+        <div class="cart-header">
+            <h3>Shopping Cart (<span id="cart-items-count">0</span>)</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be populated here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button class="checkout-button" onclick="payNow()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="success-message">
+        <div class="success-icon">✓</div>
+        <h3>Payment Successful!</h3>
+        <p>Your order has been placed successfully.</p>
+        <p>Thank you for shopping with us!</p>
+        <button class="continue-shopping" onclick="continueShoppingAfterCheckout()">Continue Shopping</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0;
+
+        function addToCart(productName, productPrice, productImage) {
+            cart.push({ 
+                name: productName, 
+                price: productPrice,
+                image: productImage
+            });
+            cartTotal += productPrice;
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartTotal', cartTotal);
+
+            updateCartUI();
+            animateCartIcon();
+        }
+
+        function animateCartIcon() {
+            const cartCount = document.getElementById('cart-count');
+            cartCount.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                cartCount.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function removeFromCart(index) {
+            const removedItem = cart[index];
+            cart.splice(index, 1);
+            cartTotal -= removedItem.price;
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartTotal', cartTotal);
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsElement = document.getElementById('cart-items');
+            const totalElement = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const cartItemsCount = document.getElementById('cart-items-count');
+
+            cartItemsElement.innerHTML = '';
+            cartCount.textContent = cart.length;
+            cartItemsCount.textContent = cart.length;
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${index})">&times;</button>
+                `;
+                cartItemsElement.appendChild(cartItem);
+            });
+
+            totalElement.textContent = `₹${cartTotal.toLocaleString('en-IN')}`;
+        }
+
+        function toggleCart() {
+            const cartPanel = document.getElementById('cart-panel');
+            const overlay = document.getElementById('overlay');
+            
+            cartPanel.classList.toggle('open');
+            
+            if (cartPanel.classList.contains('open')) {
+                overlay.style.display = 'block';
+            } else {
+                overlay.style.display = 'none';
+            }
+        }
+
+        function payNow() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            const totalAmount = cartTotal * 100; // Convert to the smallest currency unit
+            const options = {
+                key: "rzp_test_qq2soTVNJR4ac2", // Replace with your actual Razorpay API key
+                amount: totalAmount,
+                currency: "INR",
+                name: "IndiaShop",
+                description: "Purchase Payment",
+                handler: function (response) {
+                    showSuccessMessage();
+                },
+                theme: {
+                    color: "#2874f0"
+                }
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.open();
+        }
+
+        function showSuccessMessage() {
+            // Clear cart after payment
+            cart = [];
+            cartTotal = 0;
+            localStorage.removeItem('cart');
+            localStorage.removeItem('cartTotal');
+            updateCartUI();
+            
+            // Hide cart panel and show success message
+            document.getElementById('cart-panel').classList.remove('open');
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('success-message').style.display = 'block';
+        }
+
+        function continueShoppingAfterCheckout() {
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        window.onload = function () {
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="students.css"?>
+<students>
+  <student>
+    <usn>820621104007</usn>
+    <name>Raj Kumar S</name>
+    <college>SNS College of Technology</college>
+    <branch>Information Technology</branch>
+    <year_of_joining>2022</year_of_joining>
+    <email>rajkumar.s@gmail.com</email>
+  </student>
+  
+  <student>
+    <usn>820621104013</usn>
+    <name>Priya Dharshini M</name>
+    <college>Sri Ramakrishna Engineering College</college>
+    <branch>Computer Science Engineering</branch>
+    <year_of_joining>2022</year_of_joining>
+    <email>priya.dharshini@yahoo.com</email>
+  </student>
+  
+  <student>
+    <usn>820621104025</usn>
+    <name>Karthik Raj P</name>
+    <college>Kumaraguru College of Technology</college>
+    <branch>Electronics and Communication Engineering</branch>
+    <year_of_joining>2021</year_of_joining>
+    <email>karthikraj.p@outlook.com</email>
+  </student>
+</students> 

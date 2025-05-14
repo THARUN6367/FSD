@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resume>
+  <personal_info>
+    <name>AHILL S</name>
+    <contact>
+      <phone>+91-9488460536</phone>
+      <email>ahillselvaraaj@gmail.com</email>
+      <linkedin>http://www.linkedin.com/in/ahill-selvaraj</linkedin>
+      <github>https://github.com/AHILL-0121</github>
+    </contact>
+  </personal_info>
+  
+  <education>
+    <degree>
+      <title>B.Tech (IT)</title>
+      <institution>SNS College of Technology</institution>
+      <score>CGPA: 8.71</score>
+      <period>2022–2026</period>
+    </degree>
+    <degree>
+      <title>HSC</title>
+      <institution>National Model Hr. Sec School</institution>
+      <score>94.16%</score>
+      <period>2022</period>
+    </degree>
+    <degree>
+      <title>SSLC</title>
+      <institution>National Model Hr. Sec School</institution>
+      <score>98.88%</score>
+      <period>2020</period>
+    </degree>
+  </education>
+  
+  <internships>
+    <internship>
+      <company>Ether Infotech</company>
+      <position>Cybersecurity</position>
+      <mode>Offline</mode>
+      <period>July 2024</period>
+      <description>Worked on tools like Metasploit, Wireshark, and Nessus to defend against cyber threats.</description>
+    </internship>
+    <internship>
+      <company>Coincent</company>
+      <position>Cybersecurity and Ethical Hacking</position>
+      <mode>Online</mode>
+      <period>Jun–Jul 2023</period>
+      <description>Used Hydra, John the Ripper, NSE Scripts; focused on IAM and cloud security.</description>
+    </internship>
+  </internships>
+  
+  <projects>
+    <project>
+      <title>AI Based NIDS</title>
+      <description>Detects anomalous network traffic using AI.</description>
+    </project>
+    <project>
+      <title>Vulnerability Checking Browser Extension</title>
+      <description>Alerts users to website vulnerabilities.</description>
+    </project>
+    <project>
+      <title>E-commerce Website</title>
+      <description>Seamless shopping experience with robust features.</description>
+    </project>
+  </projects>
+  
+  <skills>
+    <skill_category name="Programming">
+      <item>Java</item>
+      <item>C</item>
+      <item>Python</item>
+      <item>HTML5</item>
+    </skill_category>
+    <skill_category name="Tools">
+      <item>VS Code</item>
+      <item>Canva</item>
+      <item>MS Office</item>
+      <item>Git &amp; GitHub</item>
+      <item>MySQL</item>
+    </skill_category>
+    <skill_category name="Operating Systems">
+      <item>Windows</item>
+      <item>Linux</item>
+    </skill_category>
+    <skill_category name="Soft Skills">
+      <item>Teamwork</item>
+      <item>Adaptability</item>
+      <item>Time Management</item>
+    </skill_category>
+    <skill_category name="Languages">
+      <item>Tamil</item>
+      <item>English</item>
+      <item>German</item>
+      <item>Hindi</item>
+    </skill_category>
+  </skills>
+  
+  <certifications>
+    <certification>
+      <title>AWS</title>
+      <provider>SNSCT</provider>
+      <date>2024</date>
+    </certification>
+    <certification>
+      <title>React</title>
+      <provider>SNSCT</provider>
+      <date>2024</date>
+    </certification>
+    <certification>
+      <title>Python Django</title>
+      <provider>SNSCT</provider>
+      <date>2023</date>
+    </certification>
+    <certification>
+      <title>ARVR</title>
+      <provider>BIT</provider>
+      <date>2022</date>
+    </certification>
+    <certification>
+      <title>Cybersecurity</title>
+      <provider>BIT</provider>
+      <date>2022</date>
+    </certification>
+    <certification>
+      <title>C</title>
+      <provider>Prepinsta</provider>
+      <date>Mar 2023</date>
+    </certification>
+    <certification>
+      <title>DSA in C</title>
+      <provider>Prepinsta</provider>
+      <date>Oct 2023</date>
+    </certification>
+    <certification>
+      <title>Python</title>
+      <provider>Prepinsta</provider>
+      <date>Mar 2024</date>
+    </certification>
+    <certification>
+      <title>DBMS</title>
+      <provider>Prepinsta</provider>
+      <date>Aug 2024</date>
+    </certification>
+  </certifications>
+</resume> 

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AHILL S Resume</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-bg: #f9f9f9;
+      --dark-bg: #2c3e50;
+      --text-color: #333;
+      --light-text: #fff;
+      --section-padding: 20px;
+      --border-radius: 5px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+    
+    .container {
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    
+    header {
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: white;
+      letter-spacing: 1px;
+    }
+    
+    header p {
+      font-size: 1.1rem;
+      margin: 5px 0;
+    }
+    
+    header a {
+      color: var(--secondary-color);
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    header a:hover {
+      color: var(--light-text);
+      text-decoration: underline;
+    }
+    
+    .content {
+      padding: 20px 30px;
+    }
+    
+    section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--secondary-color);
+      display: inline-block;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    li::before {
+      content: "▹";
+      color: var(--secondary-color);
+      position: absolute;
+      left: 0;
+    }
+    
+    .highlight {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: var(--accent-color);
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    .skill-category {
+      margin-bottom: 15px;
+    }
+    
+    .skill-category strong {
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 15px;
+    }
+    
+    .certification-item {
+      background-color: rgba(52, 152, 219, 0.1);
+      padding: 12px;
+      border-radius: var(--border-radius);
+      border-left: 3px solid var(--secondary-color);
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      header {
+        padding: 25px 15px;
+      }
+      
+      .content {
+        padding: 15px;
+      }
+      
+      .skills-grid, .certifications-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>AHILL S</h1>
+    <p>📞 +91-9488460536 | 📧 <a href="mailto:ahillselvaraaj@gmail.com">ahillselvaraaj@gmail.com</a></p>
+    <p>🌐 <a href="http://www.linkedin.com/in/ahill-selvaraj" target="_blank">LinkedIn</a> | <a href="https://github.com/AHILL-0121" target="_blank">GitHub</a></p>
+  </header>
+
+  <div class="content">
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>B.Tech (IT)</strong>, SNS College of Technology – <span class="highlight">CGPA: 8.71</span> (2022–2026)</li>
+        <li><strong>HSC</strong>, National Model Hr. Sec School – <span class="highlight">94.16%</span> (2022)</li>
+        <li><strong>SSLC</strong>, National Model Hr. Sec School – <span class="highlight">98.88%</span> (2020)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Internship Experience</h2>
+      <ul>
+        <li><strong>Ether Infotech – Cybersecurity</strong> (Offline, July 2024)</li>
+        <li>Worked on tools like Metasploit, Wireshark, and Nessus to defend against cyber threats.</li>
+        <li><strong>Coincent – Cybersecurity and Ethical Hacking</strong> (Online, Jun–Jul 2023)</li>
+        <li>Used Hydra, John the Ripper, NSE Scripts; focused on IAM and cloud security.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>AI Based NIDS</strong>: Detects anomalous network traffic using AI.</li>
+        <li><strong>Vulnerability Checking Browser Extension</strong>: Alerts users to website vulnerabilities.</li>
+        <li><strong>E-commerce Website</strong>: Seamless shopping experience with robust features.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <strong>Programming:</strong>
+          Java, C, Python, HTML5
+        </div>
+        <div class="skill-category">
+          <strong>Tools:</strong>
+          VS Code, Canva, MS Office, Git & GitHub, MySQL
+        </div>
+        <div class="skill-category">
+          <strong>Operating Systems:</strong>
+          Windows, Linux
+        </div>
+        <div class="skill-category">
+          <strong>Soft Skills:</strong>
+          Teamwork, Adaptability, Time Management
+        </div>
+        <div class="skill-category">
+          <strong>Languages:</strong>
+          Tamil, English, German, Hindi
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <div class="certifications-grid">
+        <div class="certification-item">AWS – SNSCT – 2024</div>
+        <div class="certification-item">React – SNSCT – 2024</div>
+        <div class="certification-item">Python Django – SNSCT – 2023</div>
+        <div class="certification-item">ARVR – BIT – 2022</div>
+        <div class="certification-item">Cybersecurity – BIT – 2022</div>
+        <div class="certification-item">C – Prepinsta – Mar 2023</div>
+        <div class="certification-item">DSA in C – Prepinsta – Oct 2023</div>
+        <div class="certification-item">Python – Prepinsta – Mar 2024</div>
+        <div class="certification-item">DBMS – Prepinsta – Aug 2024</div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
